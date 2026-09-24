@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg: #f8fbfb;
+    --color-surface: #ffffff;
+    --color-surface-2: #f0f5f7;
+    --color-border: #e2ebee;
+    --color-border-subtle: #edf3f5;
+    --color-text: #031f35;
+    --color-text-muted: #48687a;
+    --color-text-faint: #88a3b0;
+    --color-accent: #039489;
+    --color-accent-hover: #027a71;
+    --color-accent-dim: rgba(3, 148, 137, 0.08);
+    --color-success: #039489;
+    --color-success-dim: rgba(3, 148, 137, 0.08);
+    --color-warning: #d97706;
+    --color-warning-dim: rgba(217, 119, 6, 0.08);
+    --color-error: #dc2626;
+    --color-error-dim: rgba(220, 38, 38, 0.08);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: var(--color-accent-dim);
+    color: var(--color-text);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbdfe3;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a4c2c9;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #031f35 0%, #039489 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+                linear-gradient(135deg, var(--color-accent), transparent) border-box;
+  }
+
+  .glow-accent {
+    box-shadow: 0 4px 20px rgba(3, 148, 137, 0.12);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 2s linear infinite;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, var(--color-surface) 25%, var(--color-surface-2) 50%, var(--color-surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
